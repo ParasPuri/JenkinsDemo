@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools{
         jdk 'LOcalSDK'
+    }
 
     stages {
         stage ('Compile Stage') {
