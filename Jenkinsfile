@@ -30,11 +30,12 @@ pipeline {
     withSonarQubeEnv('SonarQubeLocal') {
       // requires SonarQube Scanner for Maven 3.2+
       bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-    }
-  }
+                }
+            }
         }
         
         stage('Email Notification'){
+            steps{
             mail bcc: '', body: '''Hi,
             Welcome to Jenkins job.
             Your build is successful.
@@ -42,6 +43,7 @@ pipeline {
             Thanks
             Paras''', cc: '', from: '', replyTo: '', subject: 'Jenkins job', to: 'paras.puri95work@gmail.com'
         }
+    }
         
         
 
