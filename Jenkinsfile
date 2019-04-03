@@ -36,12 +36,13 @@ pipeline {
         
         stage('Email Notification'){
             steps{
-            mail bcc: '', body: '''Hi,
-            Welcome to Jenkins job.
+           mail bcc: '', body: '''Hi,
+            Welcome to jenkins,
             Your build is successful.
 
-            Thanks
-            Paras''', cc: '', from: '', replyTo: '', subject: 'Jenkins job', to: 'paras.puri95work@gmail.com'
+            Thanks,
+            Paras''', cc: 'aparna.tyagi@nagarro.com', from: '', replyTo: '', subject: 'Jenkins job', to: 'paras.puri95work@gmail.com'
+
         }
     }
         
