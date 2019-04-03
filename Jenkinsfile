@@ -14,11 +14,23 @@ pipeline {
             }
         }
         
+          stage('Email Notification'){
+            steps{
+           mail bcc: '', body: '''Hi,Welcome to jenkins,
+           Your build is successful.
+
+            Thanks,
+            Paras''', cc: 'aparna.tyagi@nagarro.com', from: '', replyTo: '', subject: 'Jenkins job', to: 'paras.puri95work@gmail.com'
+
+        }
+    }
+        
+        
 
         stage ('Testing Stage') {
 
             steps {
-                    bat 'mvn test'
+                    bat 'mvn tet'
                     echo " SUCCESSSS"
                     echo " Not deployed becuase it needs changes in pom file"
                 }
@@ -27,25 +39,14 @@ pipeline {
         
         stage ('SonarQube analysis') {
             steps{
-    withSonarQubeEnv('SonarQubeLocal') {
+    withSonarQubeEnv('SonarQubeLoca') {
       // requires SonarQube Scanner for Maven 3.2+
       bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
                 }
             }
         }
         
-        stage('Email Notification'){
-            steps{
-           mail bcc: '', body: '''Hi,
-            Welcome to jenkins,
-            Your build is successful.
-
-            Thanks,
-            Paras''', cc: 'aparna.tyagi@nagarro.com', from: '', replyTo: '', subject: 'Jenkins job', to: 'paras.puri95work@gmail.com'
-
-        }
-    }
-        
+       
         
 
 
