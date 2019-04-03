@@ -25,6 +25,14 @@ pipeline {
             }
         
         
+        stage('SonarQube analysis') {
+    withSonarQubeEnv('SonarQubeLocal') {
+      // requires SonarQube Scanner for Maven 3.2+
+      bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+    }
+  }
+        
+        
 
 
         // stage ('Deployment Stage') {
@@ -35,10 +43,10 @@ pipeline {
         // }
     }
     
-    post {
-        always {
-           archiveArtifacts artifacts: 'target', fingerprint: true
+   // post {
+     //   always {
+       //    archiveArtifacts artifacts: 'target', fingerprint: true
             //junit 'build/reports/**/*.xml'
-        }
-    }
+        //}
+    //}
 }
