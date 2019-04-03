@@ -34,6 +34,15 @@ pipeline {
   }
         }
         
+        stage('Email Notification'){
+            mail bcc: '', body: '''Hi,
+            Welcome to Jenkins job.
+            Your build is successful.
+
+            Thanks
+            Paras''', cc: '', from: '', replyTo: '', subject: 'Jenkins job', to: 'paras.puri95work@gmail.com'
+        }
+        
         
 
 
