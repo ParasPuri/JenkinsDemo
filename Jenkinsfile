@@ -82,10 +82,4 @@ Your build is successful.
         //     }
         // }
     }
-    
-   // post {
-     //   always {
-       //    archiveArtifacts artifacts: 'target', fingerprint: true
-            //junit 'build/reports/**/*.xml'
-        //}
-    //} */
+    */
