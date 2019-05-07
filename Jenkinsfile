@@ -14,6 +14,29 @@ pipeline {
             }
         }
         
+         stage('Creating Instance'){
+          steps{
+             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'ec2Instance',
+                               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                  sh 'terraform init -input=false'
+                  sh 'terraform apply -input=false -auto-approve'
+                //    sh 'ssh -o StrictHostKeyChecking=no ec2-user@ec2-3-83-246-232.compute-1.amazonaws.com'
+                  //sh 'ssh ec2-user@ec2-3-83-246-232.compute-1.amazonaws.com sudo docker run paraspuri04/pipelinep-demodocker'
+                  
+              }
+          }
+      }
+
+      
+}
+}
+
+
+
+
+
+
+  /*
               
 
         stage ('Testing Stage') {
@@ -65,5 +88,4 @@ Your build is successful.
        //    archiveArtifacts artifacts: 'target', fingerprint: true
             //junit 'build/reports/**/*.xml'
         //}
-    //}
-}
+    //} */
